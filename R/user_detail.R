@@ -1,20 +1,18 @@
-#' Get the API Token to interact with the FruitKount API Service
+#' Get the User Details
 #'
-#' This function allows you to get the API Token to interact with the FruitKount API Service
+#' This function allows you to get the API User Details
 #' @importFrom httr POST content content_type_json
 #' @importFrom jsonlite fromJSON
-#' @param email Email of the user
-#' @param password Password of the user
-#' @return The API Token String
+#' @param token Email of the user
+#' @return The dataframe of the user detail
 #' @export
-get_token<-function(email,
-                    password) {
+user_detail<-function(token) {
 
   # Set the domain
   domain <- "https://backend.fruitkount.com/"
 
   # Set the endpoint
-  endpoint <- "authentication/token/"
+  endpoint <- "authentication/user-detail/"
 
   # Create the API URL
   api_url <- paste0(domain, endpoint)
@@ -39,8 +37,8 @@ get_token<-function(email,
   cont <- content(response, as = "text", type = "application/json", encoding="UTF-8")
   cont<-fromJSON(cont) %>% as.data.frame
 
-  print("The API Token Is:")
-  return(cont$token)
+  print("The User Details are:")
+  return(cont)
   # The following is the Bearer code that you have to use for each request
   # print(cont$token)
 }
