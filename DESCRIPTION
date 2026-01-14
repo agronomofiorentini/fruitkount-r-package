@@ -9,8 +9,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
-Imports:
-  tidyverse
-  jsonlite
-  httr
-    
+Depends: 
+    tidyverse (>= 2.0.0)
+Imports: 
+    httr (>= 1.4.7),
+    jsonlite (>= 2.0.0)
