@@ -1,7 +1,10 @@
-library(httr)
-library(tidyverse)
-library(jsonlite)
-
+#' Get the API Token to interact with the FruitKount API Service
+#'
+#' This function allows you to get the API Token to interact with the FruitKount API Service
+#' @param email Email of the user
+#' @param password Password of the user
+#' @return The API Token String
+#' @export
 get_token<-function(email,
                     password) {
 
