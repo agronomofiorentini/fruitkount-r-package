@@ -1,6 +1,8 @@
 #' Get the API Token to interact with the FruitKount API Service
 #'
 #' This function allows you to get the API Token to interact with the FruitKount API Service
+#' @importFrom httr POST content_type_json content
+#' @importFrom jsonlite fromJSON
 #' @param email Email of the user
 #' @param password Password of the user
 #' @return The API Token String
