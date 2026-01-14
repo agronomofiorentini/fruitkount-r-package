@@ -1,21 +1,25 @@
-#' Get the User Details
+#' Get the descriptive statiscs related to one sensor connected to your account
 #'
-#' This function allows you to get the API User Details
+#' Get the descriptive statiscs related to one sensor connected to your account
 #' @importFrom httr GET content content_type_json add_headers
 #' @importFrom jsonlite fromJSON
-#' @param token API Token
-#' @return The dataframe of the user detail
+#' @param id_sensor The id sensor that you want to analyze
+#' @param variable Can be "count", "height", "width", "area"
+#' @param token The Web JSON Token API
+#' @return Returns a list of the statistics
 #' @export
-user_detail<-function(token) {
+get_statistics<-function(id_sensor,
+                         variable,
+                         token) {
 
   # Set the domain
   domain <- "https://backend.fruitkount.com/"
 
   # Set the endpoint
-  endpoint <- "authentication/user-detail/"
+  endpoint <- "sensors/statistics/"
 
   # Create the API URL
-  api_url <- paste0(domain, endpoint)
+  api_url <- paste0(domain, endpoint, id_sensor, "/", variable)
 
   # Make the POST request
   response <- GET(
@@ -36,7 +40,6 @@ user_detail<-function(token) {
   cont <- content(response, as = "text", type = "application/json", encoding="UTF-8")
   cont<-fromJSON(cont) %>% as.data.frame
 
-  print("The User Details are:")
   return(cont)
   # The following is the Bearer code that you have to use for each request
   # print(cont$token)

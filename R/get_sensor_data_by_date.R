@@ -1,21 +1,25 @@
-#' Get the User Details
+#' Retrieve all data collected by a specific sensor on a selected acquisition date.
 #'
-#' This function allows you to get the API User Details
+#' Retrieve all data collected by a specific sensor on a selected acquisition date.
 #' @importFrom httr GET content content_type_json add_headers
 #' @importFrom jsonlite fromJSON
-#' @param token API Token
-#' @return The dataframe of the user detail
+#' @param id_sensor The id sensor that you want to analyze
+#' @param date The date of the data acquired
+#' @param token The Web JSON Token API
+#' @return Returns a Dataframe with the sensor data related to a specific sensor on a selected acquisition date.
 #' @export
-user_detail<-function(token) {
+get_sensor_data_by_date<-function(id_sensor,
+                                  date,
+                                  token) {
 
   # Set the domain
   domain <- "https://backend.fruitkount.com/"
 
   # Set the endpoint
-  endpoint <- "authentication/user-detail/"
+  endpoint <- "sensors/sensor-data-by-date/"
 
   # Create the API URL
-  api_url <- paste0(domain, endpoint)
+  api_url <- paste0(domain, endpoint, id_sensor, "/", date)
 
   # Make the POST request
   response <- GET(
@@ -36,7 +40,6 @@ user_detail<-function(token) {
   cont <- content(response, as = "text", type = "application/json", encoding="UTF-8")
   cont<-fromJSON(cont) %>% as.data.frame
 
-  print("The User Details are:")
   return(cont)
   # The following is the Bearer code that you have to use for each request
   # print(cont$token)

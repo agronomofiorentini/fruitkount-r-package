@@ -7,7 +7,7 @@
 user_detail(token)
 }
 \arguments{
-\item{token}{Email of the user}
+\item{token}{API Token}
 }
 \value{
 The dataframe of the user detail

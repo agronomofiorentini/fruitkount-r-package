@@ -1,18 +1,18 @@
-#' Get the User Details
+#' Get all the data related to all the sensors connected to your account
 #'
-#' This function allows you to get the API User Details
+#' Get all the data related to all the sensors connected to your account
 #' @importFrom httr GET content content_type_json add_headers
 #' @importFrom jsonlite fromJSON
-#' @param token API Token
-#' @return The dataframe of the user detail
+#' @param token The Web JSON Token API
+#' @return Returns a Dataframe with all the sensor data related to your account
 #' @export
-user_detail<-function(token) {
+get_all_data<-function(token) {
 
   # Set the domain
   domain <- "https://backend.fruitkount.com/"
 
   # Set the endpoint
-  endpoint <- "authentication/user-detail/"
+  endpoint <- "sensors/all-sensors-data/"
 
   # Create the API URL
   api_url <- paste0(domain, endpoint)
@@ -36,7 +36,6 @@ user_detail<-function(token) {
   cont <- content(response, as = "text", type = "application/json", encoding="UTF-8")
   cont<-fromJSON(cont) %>% as.data.frame
 
-  print("The User Details are:")
   return(cont)
   # The following is the Bearer code that you have to use for each request
   # print(cont$token)

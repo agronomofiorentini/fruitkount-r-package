@@ -1,6 +1,6 @@
 Package: FruitKountRPackage
 Title: FruitKountRPackage
-Version: 0.0.0.9000
+Version: 0.1
 Authors@R: 
     person("Marco", "Fiorentini", , "info@fruitkount.com", role = c("aut", "cre"),
            comment = c(ORCID = "https://orcid.org/0000-0002-1101-7313"))
@@ -12,5 +12,8 @@ RoxygenNote: 7.2.3
 Depends: 
     tidyverse (>= 2.0.0)
 Imports: 
+    htmltools (>= 0.5.8.1),
     httr (>= 1.4.7),
-    jsonlite (>= 2.0.0)
+    jsonlite (>= 2.0.0),
+    knitr (>= 1.51),
+    utils (>= 4.2.0)
