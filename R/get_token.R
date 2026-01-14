@@ -30,12 +30,14 @@ get_token<-function(email,
   )
 
   # Check the status code of the response
+  print("Status Code")
   print(response$status_code)
 
   # Check the content
   cont <- content(response, as = "text", type = "application/json", encoding="UTF-8")
   cont<-fromJSON(cont) %>% as.data.frame
 
+  return(cont$token)
   # The following is the Bearer code that you have to use for each request
   # print(cont$token)
 }
